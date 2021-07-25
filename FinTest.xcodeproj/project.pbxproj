@@ -16,6 +16,7 @@
 		E9F37DA526AD84FA00A0D65F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F37DA426AD84FA00A0D65F /* DetailViewController.swift */; };
 		E9F37DA726AD850800A0D65F /* CreateCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F37DA626AD850800A0D65F /* CreateCellViewController.swift */; };
 		E9F37DA926AD851300A0D65F /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F37DA826AD851300A0D65F /* InfoCell.swift */; };
+		E9F37DAB26AD88A900A0D65F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F37DAA26AD88A900A0D65F /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E9F37DA426AD84FA00A0D65F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E9F37DA626AD850800A0D65F /* CreateCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCellViewController.swift; sourceTree = "<group>"; };
 		E9F37DA826AD851300A0D65F /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		E9F37DAA26AD88A900A0D65F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				E9F37DA426AD84FA00A0D65F /* DetailViewController.swift */,
 				E9F37DA626AD850800A0D65F /* CreateCellViewController.swift */,
 				E9F37DA826AD851300A0D65F /* InfoCell.swift */,
+				E9F37DAA26AD88A900A0D65F /* DataManager.swift */,
 				E9792D3A26A8B25000AE38FE /* Main.storyboard */,
 				E9792D3D26A8B25100AE38FE /* Assets.xcassets */,
 				E9792D3F26A8B25100AE38FE /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				E9F37DA726AD850800A0D65F /* CreateCellViewController.swift in Sources */,
 				E9F37DA326AD84EE00A0D65F /* MainViewController.swift in Sources */,
 				E9792D3526A8B25000AE38FE /* AppDelegate.swift in Sources */,
+				E9F37DAB26AD88A900A0D65F /* DataManager.swift in Sources */,
 				E9792D3726A8B25000AE38FE /* SceneDelegate.swift in Sources */,
 				E9F37DA526AD84FA00A0D65F /* DetailViewController.swift in Sources */,
 				E9F37DA926AD851300A0D65F /* InfoCell.swift in Sources */,
