@@ -63,6 +63,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="cellImage" destination="qvc-hI-JAJ" id="HPw-UY-EDJ"/>
+                                    <outlet property="mainTitle" destination="eMN-x0-JuD" id="GHI-Xu-A0H"/>
+                                    <outlet property="subtitle" destination="nVQ-L7-53i" id="In2-BF-wcl"/>
                                     <segue destination="nJN-VE-2kz" kind="show" id="ayh-Qw-MR3"/>
                                 </connections>
                             </tableViewCell>
@@ -128,6 +131,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail screen" id="nwV-9v-WEZ"/>
+                    <connections>
+                        <outlet property="image" destination="mSG-cd-eL4" id="jaU-Ox-QHc"/>
+                        <outlet property="mainTitle" destination="9bm-Qv-Gkb" id="IRV-ga-bm8"/>
+                        <outlet property="subtitle" destination="6zQ-SC-Cne" id="wJX-Yr-5V6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QC-uR-72T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,6 +193,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create new cell" id="Bp4-qC-sr2"/>
+                    <connections>
+                        <outlet property="image" destination="iqF-3e-doV" id="emB-Zb-fo2"/>
+                        <outlet property="textField" destination="qct-qv-adE" id="BAD-c7-fnl"/>
+                        <outlet property="textView" destination="pDd-Xt-gec" id="Snr-Qd-Gsl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOQ-c0-15m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
