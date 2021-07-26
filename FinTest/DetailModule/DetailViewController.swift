@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController: DetailViewInputProtocol {
     func displayTitle(title: String) {
         mainTitle.text = title
+        self.title = title
     }
     
     func displaySubtitle(subtitile: String) {

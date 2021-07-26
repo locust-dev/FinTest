@@ -14,7 +14,13 @@ protocol MainViewInputProtocol: AnyObject {
 protocol MainViewOutputProtocol: AnyObject {
     init(view: MainViewInputProtocol)
     func viewDidLoad()
+    func addNewInfo(info: InfoData)
     func cellDidTap(at indexPath: IndexPath)
+    func cellDidDelete(at indexPath: IndexPath)
+}
+
+protocol CreateInfoDelegate {
+    func newInfoAdded(info: InfoData)
 }
 
 class MainViewController: UITableViewController {
@@ -35,6 +41,9 @@ class MainViewController: UITableViewController {
             let detailVC = segue.destination as! DetailViewController
             let configurator: DetailConfiguratorInputProtocol = DetailConfigurator()
             configurator.configure(with: detailVC, and: sender as! InfoData)
+        } else {
+            let createVC = segue.destination as! CreateInfoViewController
+            createVC.delegate = self
         }
     }
     
@@ -53,6 +62,12 @@ class MainViewController: UITableViewController {
         presenter.cellDidTap(at: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter.cellDidDelete(at: indexPath)
+        }
+    }
+    
 }
 
 //MARK: - InputProtocol
@@ -61,4 +76,12 @@ extension MainViewController: MainViewInputProtocol {
         sectionViewModel = section
         tableView.reloadData()
     }
+
+}
+
+extension MainViewController: CreateInfoDelegate {
+    func newInfoAdded(info: InfoData) {
+        presenter.addNewInfo(info: info)
+    }
+    
 }

@@ -25,6 +25,13 @@ class MainPresenter: MainViewOutputProtocol {
         interactor.getInfo(indexPath)
     }
     
+    func cellDidDelete(at indexPath: IndexPath) {
+        interactor.deleteInfo(at: indexPath)
+    }
+    
+    func addNewInfo(info: InfoData) {
+        interactor.addNewInfo(info: info)
+    }
 }
 
 //MARK: - Interactor output
