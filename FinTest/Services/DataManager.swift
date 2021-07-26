@@ -10,14 +10,14 @@ import Foundation
 class DataManager {
     
     static let shared = DataManager()
-    private init() {}
     
     let titles = ["Some", "Up", "Down"]
     let subtitles = ["Main screen", "Detail Screen", "Work Item"]
     let images = ["first", "second", "third"]
     
-    
     private var infos = [InfoData]()
+    
+    private init() {}
     
     func setInfos(infos: [InfoData]) {
         self.infos = infos
@@ -38,4 +38,5 @@ class DataManager {
     func deleteInfo(at indexPath: IndexPath) {
         infos.remove(at: indexPath.row)
     }
+    
 }

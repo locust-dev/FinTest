@@ -76,12 +76,11 @@ extension MainViewController: MainViewInputProtocol {
         sectionViewModel = section
         tableView.reloadData()
     }
-
 }
 
+//MARK: - CreateInfo Delegate
 extension MainViewController: CreateInfoDelegate {
     func newInfoAdded(info: InfoData) {
         presenter.addNewInfo(info: info)
     }
-    
 }
