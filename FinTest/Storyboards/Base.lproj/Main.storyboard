@@ -18,38 +18,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="P3Q-B0-6d6" customClass="InfoCell" customModule="FinTest" customModuleProvider="target">
-                                <rect key="frame" x="20" y="49" width="374" height="74"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" rowHeight="75" id="P3Q-B0-6d6" customClass="InfoCell" customModule="FinTest" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49" width="374" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P3Q-B0-6d6" id="W0J-dc-sSS">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="74"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1hi-Kz-Z3M">
-                                            <rect key="frame" x="8" y="11" width="358" height="52"/>
+                                            <rect key="frame" x="8" y="11" width="358" height="53"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qvc-hI-JAJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="53"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="dVY-R8-xlg"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="59z-Ws-mCt">
-                                                    <rect key="frame" x="75" y="0.0" width="283" height="52"/>
+                                                    <rect key="frame" x="75" y="0.0" width="283" height="53"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMN-x0-JuD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="24.666666666666668"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVQ-L7-53i">
-                                                            <rect key="frame" x="0.0" y="28" width="283" height="24"/>
+                                                            <rect key="frame" x="0.0" y="28.666666666666664" width="283" height="24.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="hMe-sg-ET0"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
@@ -66,7 +69,6 @@
                                     <outlet property="cellImage" destination="qvc-hI-JAJ" id="HPw-UY-EDJ"/>
                                     <outlet property="mainTitle" destination="eMN-x0-JuD" id="GHI-Xu-A0H"/>
                                     <outlet property="subtitle" destination="nVQ-L7-53i" id="In2-BF-wcl"/>
-                                    <segue destination="nJN-VE-2kz" kind="show" id="ayh-Qw-MR3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,6 +84,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="nJN-VE-2kz" kind="show" identifier="toDetail" id="n6r-01-eod"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNo-B1-cWI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,9 +137,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail screen" id="nwV-9v-WEZ"/>
                     <connections>
-                        <outlet property="image" destination="mSG-cd-eL4" id="jaU-Ox-QHc"/>
-                        <outlet property="mainTitle" destination="9bm-Qv-Gkb" id="IRV-ga-bm8"/>
-                        <outlet property="subtitle" destination="6zQ-SC-Cne" id="wJX-Yr-5V6"/>
+                        <outlet property="image" destination="mSG-cd-eL4" id="Kep-lp-o0T"/>
+                        <outlet property="mainTitle" destination="9bm-Qv-Gkb" id="xgr-Sl-nto"/>
+                        <outlet property="subtitle" destination="6zQ-SC-Cne" id="q9y-AY-fId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QC-uR-72T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -144,7 +149,7 @@
         <!--Create new cell-->
         <scene sceneID="d7C-R6-tPE">
             <objects>
-                <viewController id="ZgI-El-dwi" customClass="CreateCellViewController" customModule="FinTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZgI-El-dwi" customClass="CreateInfoViewController" customModule="FinTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3h6-1O-WJY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,12 +171,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pDd-Xt-gec">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Input some description" translatesAutoresizingMaskIntoConstraints="NO" id="pDd-Xt-gec">
                                         <rect key="frame" x="5" y="280" width="364" height="424"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>

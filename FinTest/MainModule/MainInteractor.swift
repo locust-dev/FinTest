@@ -6,32 +6,40 @@
 //
 //
 
+import Foundation
+
 protocol MainInteractorInputProtocol: AnyObject {
     init(presenter: MainInteractorOutputProtocol)
-    func provideData()
+    func fetchInfos()
+    func getInfo(_ indexPath: IndexPath)
 }
 
 protocol MainInteractorOutputProtocol: AnyObject {
-    func receiveData(infoData: [InfoData])
+    func infosDidRecieve(infoData: [InfoData])
+    func receiveInfo(infoData: InfoData)
 }
 
 class MainInteractor: MainInteractorInputProtocol {
-    
     unowned let presenter: MainInteractorOutputProtocol
     
     required init(presenter: MainInteractorOutputProtocol) {
         self.presenter = presenter
     }
     
-    func provideData() {
+    func fetchInfos() {
         var infoData = [InfoData]()
-        for i in 1...3 {
-            let info = InfoData(mainTitle: DataManager.shared.titles[i], subtitle: DataManager.shared.subtitles[i], image: nil)
+        for i in 0...2 {
+            let info = InfoData(mainTitle: DataManager.shared.titles[i],
+                                subtitle: DataManager.shared.subtitles[i],
+                                image: nil)
             infoData.append(info)
         }
-        
-        presenter.receiveData(infoData: infoData)
+        DataManager.shared.setInfos(infos: infoData)
+        presenter.infosDidRecieve(infoData: infoData)
     }
     
-    
+    func getInfo(_ indexPath: IndexPath) {
+        let infoData = DataManager.shared.getInfo(at: indexPath)
+        presenter.receiveInfo(infoData: infoData)
+    }
 }

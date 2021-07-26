@@ -7,35 +7,38 @@
 
 import Foundation
 
-struct InfoData {
-    let mainTitle: String
-    let subtitle: String
-    let image: Data?
-}
-
 //MARK: - View output
 class MainPresenter: MainViewOutputProtocol {
-    
     unowned let view: MainViewInputProtocol
     var interactor: MainInteractorInputProtocol!
+    var router: MainRouterInputProtocol!
     
     required init(view: MainViewInputProtocol) {
         self.view = view
     }
-    
-    func didTapCell(for: IndexPath) {
-        interactor.provideData()
+
+    func viewDidLoad() {
+        interactor.fetchInfos()
     }
     
+    func cellDidTap(at indexPath: IndexPath) {
+        interactor.getInfo(indexPath)
+    }
     
 }
 
 //MARK: - Interactor output
 extension MainPresenter: MainInteractorOutputProtocol {
-    func receiveData(infoData: [InfoData]) {
-        
+    func infosDidRecieve(infoData: [InfoData]) {
+        let section = InfoSectionViewModel()
+        infoData.forEach { infoData in
+            let cellViewModel = InfoCellViewModel(info: infoData)
+            section.rows.append(cellViewModel)
+        }
+        view.reloadData(for: section)
     }
-
     
-    
+    func receiveInfo(infoData: InfoData) {
+        router.openDetailScreen(with: infoData)
+    }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateCellViewController: UIViewController {
+class CreateInfoViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var textView: UITextView!
