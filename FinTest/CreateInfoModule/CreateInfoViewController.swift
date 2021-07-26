@@ -12,44 +12,19 @@ class CreateInfoViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var loadImageButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIStackView!
     
     var delegate: CreateInfoDelegate!
     private let imagePicker = UIImagePickerController()
     private var loadedImage: UIImage?
+    private var activeField: UIView?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImageButton.imageView?.contentMode = .scaleAspectFit
-        
-        
-    }
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
+        addGestureTap()
+        addObservers()
     }
     
     @IBAction func applyButtonPressed(_ sender: Any) {
@@ -117,14 +92,61 @@ extension CreateInfoViewController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
+// MARK:- Move Up View Configure
 extension CreateInfoViewController {
-   
+    private func addGestureTap() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
+        
+        var shouldMoveViewUp = false
+        
+        if let active = activeField {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            let bottomOfField = active.convert(active.bounds, to: view).maxY
+            let topOfKeyboard = view.frame.height - keyboardSize.height
+            
+            if bottomOfField > topOfKeyboard {
+                shouldMoveViewUp = true
+                scrollView.contentInset = contentInsets
+                scrollView.scrollIndicatorInsets = contentInsets
+            }
+        }
+        
+        if shouldMoveViewUp {
+            self.view.frame.origin.y = -100
+        }
+    }
 
-
-}
-
-
-extension CreateInfoViewController {
-   
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        view.frame.origin.y = 0
+    }
+    
+    @objc private func backgroundTap(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        activeField = nil
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        activeField = textView
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
     
 }
+
